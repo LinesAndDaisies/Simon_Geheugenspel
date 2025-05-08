@@ -19,6 +19,8 @@ bool waitingForInput = false; // Of het de beurt is van de speler om op de knopp
 
 
 void setup() {
+  randomSeed(analogRead(A0)); // Random seed, niks op aangesloten, om elke keer na uploaden een andere sequence te hebben
+
   lcd.init(); // Initiaseert het LCD, maakt het klaar voor gebruik
   lcd.backlight(); // Zet de achtergrondverlichting aan van de LCD
   pinMode(buzzerPin, OUTPUT);
@@ -105,7 +107,7 @@ void checkUserInput() {
           lcd.print("Goed zo!");
           lcd.setCursor(0, 1);
           lcd.print("Level: " + String(level + 1));
-          playSuccesSound(); // Hier maakt de buzzer het succes geluid
+          //playSuccesSound(); // Hier maakt de buzzer het succes geluid
           delay(1500);
           level++; // Level omhoog
           userIndex = 0; // Reset de zetten weer op 0
@@ -128,7 +130,7 @@ void checkUserInput() {
         lcd.print("Druk op een knop om");
         lcd.setCursor(0, 3);
         lcd.print("opnieuw te beginnen");
-        playGameOverSound(); // Hier maakt de buzzer het game over geluid geluid
+        //playGameOverSound(); // Hier maakt de buzzer het game over geluid geluid
         level = 0;
 
         // Sequence word leeggehaald, om niet dezelfde sequence te krijgen
